@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-03 06:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/models.py:45
+msgid "comment"
+msgstr ""
+
+#: apps/models.py:46
+msgid "comments"
+msgstr ""
+
+#: apps/models.py:60
+msgid "worker"
+msgstr ""
+
+#: apps/models.py:61
+msgid "workers"
+msgstr ""
+
+#: apps/models.py:73
+msgid "product"
+msgstr ""
+
+#: apps/models.py:74
+msgid "products"
+msgstr ""
+
+#: templates/apps/header.html:273
+msgid "home"
+msgstr ""
+
+#: templates/apps/header.html:275
+msgid "Home One"
+msgstr ""
+
+#: templates/apps/header.html:276
+msgid "Home Two"
+msgstr ""
+
+#: templates/apps/header.html:277
+msgid "Home Three"
+msgstr ""
+
+#: templates/apps/header.html:278
+msgid "Home Four"
+msgstr ""

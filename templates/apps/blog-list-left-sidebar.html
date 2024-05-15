@@ -1,0 +1,112 @@
+{% extends 'apps/base.html' %}
+{% load make_url %}
+{% load static %}
+
+{% block content %}
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="{% url "home_page" %}">Home</a></li>
+                    <li class="active">Blog List Left Sidebar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="li-main-blog-page pt-60 pb-55">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Li's Blog Sidebar Area -->
+
+                {% include "apps/sidebar.html" %}
+
+                <!-- Li's Blog Sidebar Area End Here -->
+                <!-- Begin Li's Main Content Area -->
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="row li-main-content">
+
+                        {% for product in products %}
+                            <div class="col-lg-12">
+                                <div class="li-blog-single-item mb-30">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="li-blog-banner">
+                                                <a href="{% url 'detail_page' product.pk %}"><img class="img-full"
+                                                                                                  src="{{ product.image.url }}"
+                                                                                                  alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="li-blog-content">
+                                                <div class="li-blog-details">
+                                                    <h3 class="li-blog-heading pt-xs-25 pt-sm-25"><a
+                                                            href="{% url 'detail_page' product.pk %}">{{ product.title }}</a>
+                                                    </h3>
+                                                    <div class="li-blog-meta">
+                                                        <a class="author" href="#"><i
+                                                                class="fa fa-user"></i>{{ product.user }}</a>
+                                                        <a class="comment" href="#"><i
+                                                                class="fa fa-comment-o"></i> {{ product.comment_set.count }}
+                                                            comment</a>
+                                                        <a class="post-time" href="#"><i
+                                                                class="fa fa-calendar"></i> {{ product.created_at|date:"d M Y" }}
+                                                        </a>
+                                                    </div>
+                                                    <p>{{ product.description|truncatechars:147 }}</p>
+                                                    <a class="read-more" href="{% url 'detail_page' product.pk %}">Read
+                                                        More...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+                        <!-- Begin Li's Pagination Area -->
+                        <div class="col-lg-12">
+                            <div class="li-paginatoin-area text-center pt-25">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul class="li-pagination-box">
+                                            {% if page_obj.has_previous %}
+                                                <li><a class="Previous"
+                                                       href="{{ request|make_url:page_obj.previous_page_number }}">Previous</a>
+                                                </li>
+                                            {% endif %}
+                                            {% for num in page_obj.paginator.page_range %}
+                                                {% if num == page_obj.number %}
+                                                    <li class="active"><a
+                                                            href="{{ request|make_url:num }}">{{ num }}</a></li>
+                                                {% elif page_obj.number|add:'-2' < num and num < page_obj.number|add:'2' %}
+                                                    <li><a href="{{ request|make_url:num }}">{{ num }}</a></li>
+                                                {% endif %}
+
+
+                                            {% endfor %}
+
+
+                                            {% if page_obj.has_next %}
+                                                <li><a class="Next"
+                                                       href="{{ request|make_url:page_obj.next_page_number }}">Next</a>
+                                                </li>
+                                            {% endif %}
+
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Li's Pagination End Here Area -->
+                    </div>
+                </div>
+                <!-- Li's Main Content Area End Here -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+<div class="col-lg-3 order-lg-1 order-2">
+    <div class="li-blog-sidebar-wrapper">
+        <div class="li-blog-sidebar">
+            <div class="li-sidebar-search-form pt-xs-30 pt-sm-30">
+                <form action="{% url 'home_page' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="li-search-field" placeholder="search here" name="search">
+                    <button type="submit" class="li-search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="li-blog-sidebar pt-25">
+            <h4 class="li-blog-sidebar-title">Categories</h4>
+            <ul class="li-blog-archive">
+                <li><a href="{% url 'home_page' %}">All</a></li>
+
+                {% for category in categories %}
+                    <li><a href="?category={{ category.name }}">{{ category.name }}
+                        ({{ category.product_set.count }})</a></li>
+                {% endfor %}
+
+
+            </ul>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title">Blog Archives</h4>
+            <ul class="li-blog-archive">
+                <li><a href="#">January ({{ january }})</a></li>
+                <li><a href="#">February ({{ february }})</a></li>
+                <li><a href="#">March ({{ march }})</a></li>
+                <li><a href="#">April ({{ april }})</a></li>
+                <li><a href="#">May ({{ may }})</a></li>
+                <li><a href="#">June ({{ may }})</a></li>
+                <li><a href="#">July ({{ may }})</a></li>
+                <li><a href="#">August ({{ may }})</a></li>
+            </ul>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title">Recent Post</h4>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="blog-details-left-sidebar.html">
+                        <img class="img-full" src="{% static 'apps/images/product/small-size/3.jpg' %}"
+                             alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="blog-details-left-sidebar.html">First Blog Post</a></span>
+                    <span class="li-post-date">25.11.2018</span>
+                </div>
+            </div>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="blog-details-left-sidebar.html">
+                        <img class="img-full" src="{% static 'apps/images/product/small-size/2.jpg' %}"
+                             alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="blog-details-left-sidebar.html">First Blog Post</a></span>
+                    <span class="li-post-date">25.11.2018</span>
+                </div>
+            </div>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="blog-details-left-sidebar.html">
+                        <img class="img-full" src="{% static 'apps/images/product/small-size/5.jpg' %}"
+                             alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="blog-details-left-sidebar.html">First Blog Post</a></span>
+                    <span class="li-post-date">25.11.2018</span>
+                </div>
+            </div>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title">Tags</h4>
+            <ul class="li-blog-tags">
+
+                {% for tag in tags %}
+                    <li><a href="?tag={{ tag.name }}">{{ tag.name }}</a></li>
+                {% endfor %}
+
+
+            </ul>
+        </div>
+    </div>
+</div>

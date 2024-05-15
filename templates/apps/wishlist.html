@@ -1,0 +1,54 @@
+{% extends 'apps/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Wishlist</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="wishlist-area pt-60 pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#">
+                        <div class="table-content table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="li-product-remove">remove</th>
+                                    <th class="li-product-thumbnail">images</th>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="li-product-price">Unit Price</th>
+                                    <th class="li-product-stock-status">Stock Status</th>
+                                    <th class="li-product-add-cart">add to cart</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for liked_product in liked_products %}
+                                	<tr>
+                                    <td class="li-product-remove"><a href="{% url "nimadir" liked_product.pk %}"><i class="fa fa-times"></i></a></td>
+                                    <td class="li-product-thumbnail"><a href="{% url "product_page" liked_product.pk %}"><img
+                                            src="{{ liked_product.image.url }}" style="width: 70px; height: 70px" alt=""></a></td>
+                                    <td class="li-product-name"><a href="{% url "product_page" liked_product.pk %}">{{ liked_product.title}}</a></td>
+                                    <td class="li-product-price"><span class="amount">${{ liked_product.price }}</span></td>
+                                    <td class="li-product-stock-status"><span class="in-stock">in stock</span></td>
+                                    <td class="li-product-add-cart"><a href="#">add to cart</a></td>
+                                </tr>
+                                    
+                                {% endfor %}
+                                
+                               
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
